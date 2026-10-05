@@ -3,342 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>NAZUAN PLAY</title>
-
   <link rel="stylesheet" href="style.css">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
 </head>
 
 <body>
 
-  <!-- BACKGROUND EFFECT -->
-  <div class="bg-glow glow-1"></div>
-  <div class="bg-glow glow-2"></div>
+<header class="navbar">
+  <div class="logo">NAZUAN <span>PLAY</span></div>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-
-    <div class="logo">
-      <span>NAZUAN</span> PLAY
-    </div>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#games">Games</a>
-      <a href="#leaderboard">Leaderboard</a>
-      <a href="#profile">Profile</a>
-    </nav>
-
-    <button class="menu-btn" onclick="toggleMenu()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-
-  </header>
-
-
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+  <nav>
     <a href="#home">Home</a>
     <a href="#games">Games</a>
     <a href="#leaderboard">Leaderboard</a>
-    <a href="#profile">Profile</a>
-  </div>
+  </nav>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#games">Games</a>
+  <a href="#leaderboard">Leaderboard</a>
+</div>
 
 
-  <!-- HERO -->
-  <section class="hero" id="home">
+<section class="hero" id="home">
 
-    <div class="hero-content">
+  <div class="hero-text">
 
-      <div class="badge">
-        <i class="fa-solid fa-bolt"></i>
-        NEW SEASON 2026
-      </div>
+    <div class="badge">⚡ AUTO DEMO MODE</div>
 
-      <h1>
-        PLAY.
-        <span>COMPETE.</span>
-        WIN.
-      </h1>
+    <h1>
+      PLAY.<br>
+      <span>COMPETE.</span><br>
+      HAVE FUN.
+    </h1>
 
-      <p>
-        Mainkan berbagai game seru, kumpulkan poin virtual,
-        dan jadilah pemain terbaik.
-      </p>
+    <p>
+      Portal game arcade dengan demo otomatis,
+      skor, XP, level, dan koin virtual.
+    </p>
 
-      <div class="hero-buttons">
-        <button class="primary-btn" onclick="goGames()">
-          <i class="fa-solid fa-gamepad"></i>
-          MAIN SEKARANG
-        </button>
+    <div class="buttons">
+      <button class="primary" onclick="startAutoPlay()">
+        ▶ AUTO PLAY
+      </button>
 
-        <button class="secondary-btn" onclick="showInfo()">
-          <i class="fa-solid fa-circle-info"></i>
-          INFO
-        </button>
-      </div>
-
-    </div>
-
-    <div class="hero-card">
-
-      <div class="hero-card-top">
-        <span>PLAYER OF THE DAY</span>
-        <i class="fa-solid fa-crown"></i>
-      </div>
-
-      <div class="player-avatar">
-        N
-      </div>
-
-      <h3>NAZUAN</h3>
-      <p>LEVEL 12</p>
-
-      <div class="xp">
-        <div class="xp-text">
-          <span>XP</span>
-          <span>780 / 1000</span>
-        </div>
-
-        <div class="xp-bar">
-          <div></div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- STATS -->
-  <section class="stats container">
-
-    <div class="stat-card">
-      <i class="fa-solid fa-coins"></i>
-      <div>
-        <small>KOIN VIRTUAL</small>
-        <strong id="coins">2,450</strong>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <i class="fa-solid fa-trophy"></i>
-      <div>
-        <small>RANK</small>
-        <strong>#08</strong>
-      </div>
-    </div>
-
-    <div class="stat-card">
-      <i class="fa-solid fa-gamepad"></i>
-      <div>
-        <small>GAME DIMAINKAN</small>
-        <strong id="played">24</strong>
-      </div>
-    </div>
-
-  </section>
-
-
-  <!-- GAMES -->
-  <section class="section container" id="games">
-
-    <div class="section-heading">
-      <div>
-        <small>EXPLORE</small>
-        <h2>Game Pilihan</h2>
-      </div>
-
-      <button class="filter-btn" onclick="filterGames()">
-        <i class="fa-solid fa-sliders"></i>
-        FILTER
+      <button class="secondary" onclick="stopAutoPlay()">
+        ■ STOP
       </button>
     </div>
 
-
-    <div class="game-grid">
-
-      <div class="game-card">
-        <div class="game-image target">
-          <i class="fa-solid fa-crosshairs"></i>
-          <span>HOT</span>
-        </div>
-
-        <div class="game-info">
-          <h3>Target Rush</h3>
-          <p>Arcade • Action</p>
-
-          <button onclick="playGame('Target Rush')">
-            PLAY
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-
-
-      <div class="game-card">
-        <div class="game-image puzzle">
-          <i class="fa-solid fa-puzzle-piece"></i>
-        </div>
-
-        <div class="game-info">
-          <h3>Puzzle Master</h3>
-          <p>Puzzle • Casual</p>
-
-          <button onclick="playGame('Puzzle Master')">
-            PLAY
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-
-
-      <div class="game-card">
-        <div class="game-image space">
-          <i class="fa-solid fa-rocket"></i>
-          <span>NEW</span>
-        </div>
-
-        <div class="game-info">
-          <h3>Space Run</h3>
-          <p>Adventure • Arcade</p>
-
-          <button onclick="playGame('Space Run')">
-            PLAY
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-
-
-      <div class="game-card">
-        <div class="game-image race">
-          <i class="fa-solid fa-car-side"></i>
-        </div>
-
-        <div class="game-info">
-          <h3>Speed Race</h3>
-          <p>Racing • Sport</p>
-
-          <button onclick="playGame('Speed Race')">
-            PLAY
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- LEADERBOARD -->
-  <section class="section container" id="leaderboard">
-
-    <div class="section-heading">
-      <div>
-        <small>TOP PLAYERS</small>
-        <h2>Leaderboard</h2>
-      </div>
-    </div>
-
-    <div class="leaderboard">
-
-      <div class="leader first">
-        <b>#1</b>
-        <div class="mini-avatar">A</div>
-        <strong>ALVIN</strong>
-        <span>12,840 XP</span>
-      </div>
-
-      <div class="leader second">
-        <b>#2</b>
-        <div class="mini-avatar">R</div>
-        <strong>RIZKY</strong>
-        <span>11,920 XP</span>
-      </div>
-
-      <div class="leader third">
-        <b>#3</b>
-        <div class="mini-avatar">D</div>
-        <strong>DANU</strong>
-        <span>10,775 XP</span>
-      </div>
-
-      <div class="leader me">
-        <b>#8</b>
-        <div class="mini-avatar">N</div>
-        <strong>NAZUAN</strong>
-        <span>8,430 XP</span>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PROFILE -->
-  <section class="profile container" id="profile">
-
-    <div class="profile-avatar">
-      N
-    </div>
-
-    <div class="profile-info">
-      <small>PLAYER PROFILE</small>
-      <h2>NAZUAN</h2>
-      <p>Level 12 • 8,430 XP</p>
-
-      <div class="profile-progress">
-        <div></div>
-      </div>
-    </div>
-
-    <button class="profile-btn" onclick="editProfile()">
-      EDIT PROFILE
-    </button>
-
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="footer-logo">
-      NAZUAN PLAY
-    </div>
-
-    <p>
-      Platform game hiburan dengan sistem poin virtual.
-    </p>
-
-    <div class="social">
-      <i class="fa-brands fa-youtube"></i>
-      <i class="fa-brands fa-instagram"></i>
-      <i class="fa-brands fa-tiktok"></i>
-    </div>
-
-    <hr>
-
-    <small>
-      © 2026 NAZUAN PLAY. All rights reserved.
-    </small>
-
-  </footer>
-
-
-  <!-- TOAST -->
-  <div class="toast" id="toast">
-    <i class="fa-solid fa-circle-check"></i>
-    <span id="toastText">Game dimulai!</span>
   </div>
 
 
-  <script src="script.js"></script>
+  <div class="demo-game">
+
+    <div class="game-header">
+      <span>LIVE GAME</span>
+      <b id="gameStatus">AUTO PLAY</b>
+    </div>
+
+    <div class="game-screen" id="gameScreen">
+
+      <div class="grid-lines"></div>
+
+      <div class="player">🚀</div>
+
+      <div class="target target1">◆</div>
+      <div class="target target2">◆</div>
+      <div class="target target3">◆</div>
+
+      <div class="score-box">
+        SCORE
+        <strong id="score">0</strong>
+      </div>
+
+    </div>
+
+    <div class="game-bottom">
+
+      <div>
+        <small>LEVEL</small>
+        <strong id="level">1</strong>
+      </div>
+
+      <div>
+        <small>XP</small>
+        <strong id="xp">0</strong>
+      </div>
+
+      <div>
+        <small>COINS</small>
+        <strong id="coins">2,450</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="stats">
+
+  <div class="stat">
+    <span>🎮</span>
+    <div>
+      <small>GAME DIMAINKAN</small>
+      <strong id="played">24</strong>
+    </div>
+  </div>
+
+  <div class="stat">
+    <span>🏆</span>
+    <div>
+      <small>RANK</small>
+      <strong>#08</strong>
+    </div>
+  </div>
+
+  <div class="stat">
+    <span>🔥</span>
+    <div>
+      <small>STREAK</small>
+      <strong id="streak">7</strong>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="section" id="games">
+
+  <div class="heading">
+    <div>
+      <small>EXPLORE</small>
+      <h2>GAME CENTER</h2>
+    </div>
+  </div>
+
+
+  <div class="games">
+
+    <article class="game-card">
+
+      <div class="game-icon target-icon">🎯</div>
+
+      <h3>Target Rush</h3>
+      <p>Arcade • Action</p>
+
+      <button onclick="openGame('Target Rush')">
+        PLAY GAME →
+      </button>
+
+    </article>
+
+
+    <article class="game-card">
+
+      <div class="game-icon puzzle-icon">🧩</div>
+
+      <h3>Puzzle Master</h3>
+      <p>Puzzle • Casual</p>
+
+      <button onclick="openGame('Puzzle Master')">
+        PLAY GAME →
+      </button>
+
+    </article>
+
+
+    <article class="game-card">
+
+      <div class="game-icon space-icon">🚀</div>
+
+      <h3>Space Run</h3>
+      <p>Arcade • Adventure</p>
+
+      <button onclick="openGame('Space Run')">
+        PLAY GAME →
+      </button>
+
+    </article>
+
+
+    <article class="game-card">
+
+      <div class="game-icon race-icon">🏎️</div>
+
+      <h3>Speed Race</h3>
+      <p>Racing • Arcade</p>
+
+      <button onclick="openGame('Speed Race')">
+        PLAY GAME →
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="leaderboard">
+
+  <div class="heading">
+    <div>
+      <small>TOP PLAYERS</small>
+      <h2>LEADERBOARD</h2>
+    </div>
+  </div>
+
+
+  <div class="leaderboard">
+
+    <div class="leader">
+      <b>#1</b>
+      <span class="avatar">A</span>
+      <strong>ALVIN</strong>
+      <em>12,840 XP</em>
+    </div>
+
+    <div class="leader">
+      <b>#2</b>
+      <span class="avatar">R</span>
+      <strong>RIZKY</strong>
+      <em>11,920 XP</em>
+    </div>
+
+    <div class="leader">
+      <b>#3</b>
+      <span class="avatar">D</span>
+      <strong>DANU</strong>
+      <em>10,775 XP</em>
+    </div>
+
+    <div class="leader you">
+      <b>#8</b>
+      <span class="avatar">N</span>
+      <strong>NAZUAN</strong>
+      <em id="leaderXP">8,430 XP</em>
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <h2>NAZUAN PLAY</h2>
+
+  <p>
+    Arcade gaming dengan poin dan koin virtual.
+  </p>
+
+  <div>
+    <span>▶</span>
+    <span>◎</span>
+    <span>♪</span>
+  </div>
+
+  <hr>
+
+  <small>© 2026 NAZUAN PLAY</small>
+
+</footer>
+
+
+<div class="toast" id="toast">
+  🎮 <span id="toastText">Game dimulai</span>
+</div>
+
+
+<script src="script.js"></script>
 
 </body>
   </html>
