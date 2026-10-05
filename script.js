@@ -8,22 +8,32 @@ let streak = 7;
 let autoPlaying = true;
 let autoTimer;
 
+let playerX = 50;
+let playerY = 45;
 
-/* ELEMENTS */
+let vipActive = true;
+let currentSkin = "🚀";
 
+
+const player = document.getElementById("player");
 const scoreEl = document.getElementById("score");
 const xpEl = document.getElementById("xp");
 const coinsEl = document.getElementById("coins");
 const levelEl = document.getElementById("level");
 const playedEl = document.getElementById("played");
-const streakEl = document.getElementById("streak");
 const leaderXPEl = document.getElementById("leaderXP");
-
-const player = document.querySelector(".player");
 const gameStatus = document.getElementById("gameStatus");
 
+const joystickBase =
+  document.getElementById("joystickBase");
 
-/* AUTO PLAY */
+const joystickStick =
+  document.getElementById("joystickStick");
+
+
+/* =========================
+   AUTO PLAY
+========================= */
 
 function startAutoPlay() {
 
@@ -41,43 +51,37 @@ function startAutoPlay() {
 }
 
 
-/* STOP */
-
 function stopAutoPlay() {
 
   autoPlaying = false;
 
   player.classList.remove("auto");
 
-  gameStatus.textContent = "STOPPED";
+  gameStatus.textContent = "MANUAL";
 
   clearInterval(autoTimer);
 
-  showToast("■ Auto Play dihentikan");
+  showToast("🎮 Mode manual aktif");
 }
 
-
-/* AUTO GAME */
 
 function autoGame() {
 
   if (!autoPlaying) return;
 
-  const gainedScore =
+  const addScore =
     Math.floor(Math.random() * 80) + 20;
 
-  const gainedXP =
+  const addXP =
     Math.floor(Math.random() * 25) + 5;
 
-  const gainedCoins =
+  const addCoins =
     Math.floor(Math.random() * 30) + 5;
 
-  score += gainedScore;
-  xp += gainedXP;
-  coins += gainedCoins;
+  score += addScore;
+  xp += addXP;
+  coins += addCoins;
 
-
-  /* LEVEL */
 
   if (xp >= level * 100) {
 
@@ -86,12 +90,20 @@ function autoGame() {
     level++;
 
     showToast(
-      "🔥 LEVEL UP! Sekarang Level " + level
+      "🔥 LEVEL UP! LEVEL " + level
     );
   }
 
 
-  /* UPDATE */
+  updateUI();
+}
+
+
+/* =========================
+   UI
+========================= */
+
+function updateUI() {
 
   scoreEl.textContent =
     score.toLocaleString("id-ID");
@@ -104,24 +116,23 @@ function autoGame() {
 
   levelEl.textContent = level;
 
-
-  /* LEADERBOARD */
-
-  const leaderboardXP =
-    8430 + score;
+  playedEl.textContent = played;
 
   leaderXPEl.textContent =
-    leaderboardXP.toLocaleString("id-ID") + " XP";
+    (8430 + score).toLocaleString("id-ID") +
+    " XP";
 }
 
 
-/* MANUAL GAME */
+/* =========================
+   OPEN GAME
+========================= */
 
 function openGame(name) {
 
   played++;
 
-  playedEl.textContent = played;
+  updateUI();
 
   showToast(
     "🎮 " + name + " dibuka!"
@@ -129,14 +140,239 @@ function openGame(name) {
 
   if (!autoPlaying) {
 
-    startAutoPlay();
+    showToast(
+      "🕹️ Gunakan analog untuk bergerak"
+    );
+  }
+}
+
+
+/* =========================
+   SKIN
+========================= */
+
+function selectSkin(skin) {
+
+  if (skin === "👑" && !vipActive) {
+
+    showToast(
+      "👑 Skin ini khusus VIP"
+    );
+
+    return;
+  }
+
+  currentSkin = skin;
+
+  player.textContent = skin;
+
+  document
+    .querySelectorAll(".skin")
+    .forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+  event.currentTarget.classList.add("active");
+
+  showToast(
+    "🎨 Skin dipilih: " + skin
+  );
+}
+
+
+/* =========================
+   VIP GAME PASS
+========================= */
+
+function activateVIP() {
+
+  vipActive = true;
+
+  document.getElementById("vipStatus")
+    .textContent = "VIP 👑";
+
+  showToast(
+    "👑 VIP Game Pass aktif! Fitur kosmetik terbuka."
+  );
+}
+
+
+/* =========================
+   ANALOG
+========================= */
+
+let dragging = false;
+
+joystickBase.addEventListener(
+  "pointerdown",
+  function(e) {
+
+    dragging = true;
+
+    joystickBase.setPointerCapture(e.pointerId);
+
+    stopAutoPlay();
+
+    moveJoystick(e);
+  }
+);
+
+
+joystickBase.addEventListener(
+  "pointermove",
+  function(e) {
+
+    if (!dragging) return;
+
+    moveJoystick(e);
+  }
+);
+
+
+joystickBase.addEventListener(
+  "pointerup",
+  resetJoystick
+);
+
+
+joystickBase.addEventListener(
+  "pointercancel",
+  resetJoystick
+);
+
+
+function moveJoystick(e) {
+
+  const rect =
+    joystickBase.getBoundingClientRect();
+
+  const centerX =
+    rect.left + rect.width / 2;
+
+  const centerY =
+    rect.top + rect.height / 2;
+
+  let dx = e.clientX - centerX;
+  let dy = e.clientY - centerY;
+
+  const max = 25;
+
+  const distance =
+    Math.sqrt(dx * dx + dy * dy);
+
+  if (distance > max) {
+
+    dx = dx / distance * max;
+    dy = dy / distance * max;
+  }
+
+  joystickStick.style.transform =
+    `translate(${dx}px, ${dy}px)`;
+
+  movePlayer(dx / max, dy / max);
+}
+
+
+function resetJoystick() {
+
+  dragging = false;
+
+  joystickStick.style.transform =
+    "translate(0,0)";
+}
+
+
+function movePlayer(x, y) {
+
+  const screen =
+    document.getElementById("gameScreen");
+
+  const rect =
+    screen.getBoundingClientRect();
+
+  playerX += x * 1.8;
+  playerY += y * 1.8;
+
+  playerX =
+    Math.max(7, Math.min(93, playerX));
+
+  playerY =
+    Math.max(12, Math.min(88, playerY));
+
+  player.style.left =
+    playerX + "%";
+
+  player.style.top =
+    playerY + "%";
+
+  player.style.transform =
+    "translate(-50%,-50%)";
+}
+
+
+/* =========================
+   KEYBOARD CONTROL
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(e) {
+
+    const key =
+      e.key.toLowerCase();
+
+    if (
+      key === "arrowup" ||
+      key === "w"
+    ) {
+      stopAutoPlay();
+      movePlayer(0,-1);
+    }
+
+    if (
+      key === "arrowdown" ||
+      key === "s"
+    ) {
+      stopAutoPlay();
+      movePlayer(0,1);
+    }
+
+    if (
+      key === "arrowleft" ||
+      key === "a"
+    ) {
+      stopAutoPlay();
+      movePlayer(-1,0);
+    }
+
+    if (
+      key === "arrowright" ||
+      key === "d"
+    ) {
+      stopAutoPlay();
+      movePlayer(1,0);
+    }
 
   }
+);
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu() {
+
+  document
+    .getElementById("mobileMenu")
+    .classList.toggle("active");
 
 }
 
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
 
 function showToast(message) {
 
@@ -154,30 +390,24 @@ function showToast(message) {
 
     toast.classList.remove("show");
 
-  }, 2200);
-
+  }, 2300);
 }
 
 
-/* MOBILE MENU */
+/* =========================
+   START
+========================= */
 
-function toggleMenu() {
+window.addEventListener(
+  "load",
+  function() {
 
-  const menu =
-    document.getElementById("mobileMenu");
+    player.classList.add("auto");
 
-  menu.classList.toggle("active");
+    autoTimer =
+      setInterval(autoGame, 700);
 
-}
+    updateUI();
 
-
-/* START AUTO PLAY SAAT WEBSITE DIBUKA */
-
-window.addEventListener("load", () => {
-
-  player.classList.add("auto");
-
-  autoTimer =
-    setInterval(autoGame, 700);
-
-});
+  }
+);
