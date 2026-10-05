@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>NAZUAN PLAY</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,6 +15,7 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#games">Games</a>
+    <a href="#vip">VIP Pass</a>
     <a href="#leaderboard">Leaderboard</a>
   </nav>
 
@@ -24,15 +25,18 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home">Home</a>
   <a href="#games">Games</a>
+  <a href="#vip">VIP Pass</a>
   <a href="#leaderboard">Leaderboard</a>
 </div>
 
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
   <div class="hero-text">
 
-    <div class="badge">⚡ AUTO DEMO MODE</div>
+    <div class="badge">⚡ AUTO PLAY + MANUAL CONTROL</div>
 
     <h1>
       PLAY.<br>
@@ -41,8 +45,8 @@
     </h1>
 
     <p>
-      Portal game arcade dengan demo otomatis,
-      skor, XP, level, dan koin virtual.
+      Mainkan game arcade dengan kontrol analog,
+      auto-play, skin, arena, XP, dan VIP Game Pass.
     </p>
 
     <div class="buttons">
@@ -58,6 +62,8 @@
   </div>
 
 
+  <!-- GAME -->
+
   <div class="demo-game">
 
     <div class="game-header">
@@ -69,7 +75,7 @@
 
       <div class="grid-lines"></div>
 
-      <div class="player">🚀</div>
+      <div class="player" id="player">🚀</div>
 
       <div class="target target1">◆</div>
       <div class="target target2">◆</div>
@@ -80,7 +86,24 @@
         <strong id="score">0</strong>
       </div>
 
+
+      <!-- ANALOG -->
+
+      <div class="joystick-area">
+
+        <div class="joystick-base" id="joystickBase">
+
+          <div
+            class="joystick-stick"
+            id="joystickStick">
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
 
     <div class="game-bottom">
 
@@ -106,6 +129,8 @@
 </section>
 
 
+<!-- STATS -->
+
 <section class="stats">
 
   <div class="stat">
@@ -117,10 +142,10 @@
   </div>
 
   <div class="stat">
-    <span>🏆</span>
+    <span>👑</span>
     <div>
-      <small>RANK</small>
-      <strong>#08</strong>
+      <small>STATUS</small>
+      <strong id="vipStatus">VIP</strong>
     </div>
   </div>
 
@@ -135,15 +160,14 @@
 </section>
 
 
+<!-- GAMES -->
+
 <section class="section" id="games">
 
   <div class="heading">
-    <div>
-      <small>EXPLORE</small>
-      <h2>GAME CENTER</h2>
-    </div>
+    <small>EXPLORE</small>
+    <h2>GAME CENTER</h2>
   </div>
-
 
   <div class="games">
 
@@ -207,15 +231,88 @@
 </section>
 
 
+<!-- VIP GAME PASS -->
+
+<section class="section" id="vip">
+
+  <div class="heading">
+    <small>PREMIUM COSMETICS</small>
+    <h2>VIP GAME PASS</h2>
+  </div>
+
+
+  <div class="vip-card">
+
+    <div class="vip-icon">👑</div>
+
+    <div class="vip-content">
+
+      <span class="vip-label">NAZUAN VIP</span>
+
+      <h2>VIP GAME PASS</h2>
+
+      <p>
+        Buka skin eksklusif, efek kendaraan,
+        badge VIP, dan arena khusus.
+      </p>
+
+      <div class="vip-features">
+
+        <span>✓ VIP Badge</span>
+        <span>✓ Neon Skin</span>
+        <span>✓ VIP Arena</span>
+        <span>✓ Special Effects</span>
+
+      </div>
+
+      <button class="vip-btn" onclick="activateVIP()">
+        AKTIFKAN VIP
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SKINS -->
+
+  <h3 class="sub-title">🎨 PILIH SKIN</h3>
+
+  <div class="skins">
+
+    <button class="skin active" onclick="selectSkin('🚀')">
+      🚀
+      <small>DEFAULT</small>
+    </button>
+
+    <button class="skin" onclick="selectSkin('🛸')">
+      🛸
+      <small>SPACE</small>
+    </button>
+
+    <button class="skin" onclick="selectSkin('⚡')">
+      ⚡
+      <small>NEON</small>
+    </button>
+
+    <button class="skin vip-skin" onclick="selectSkin('👑')">
+      👑
+      <small>VIP</small>
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- LEADERBOARD -->
+
 <section class="section" id="leaderboard">
 
   <div class="heading">
-    <div>
-      <small>TOP PLAYERS</small>
-      <h2>LEADERBOARD</h2>
-    </div>
+    <small>TOP PLAYERS</small>
+    <h2>LEADERBOARD</h2>
   </div>
-
 
   <div class="leaderboard">
 
@@ -243,7 +340,7 @@
     <div class="leader you">
       <b>#8</b>
       <span class="avatar">N</span>
-      <strong>NAZUAN</strong>
+      <strong>NAZUAN 👑</strong>
       <em id="leaderXP">8,430 XP</em>
     </div>
 
@@ -259,12 +356,6 @@
   <p>
     Arcade gaming dengan poin dan koin virtual.
   </p>
-
-  <div>
-    <span>▶</span>
-    <span>◎</span>
-    <span>♪</span>
-  </div>
 
   <hr>
 
