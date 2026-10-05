@@ -23,8 +23,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 15% 20%, rgba(0,238,255,.10), transparent 30%),
-    radial-gradient(circle at 85% 70%, rgba(112,45,255,.10), transparent 30%);
+    radial-gradient(circle at 15% 20%, rgba(0,234,255,.12), transparent 30%),
+    radial-gradient(circle at 85% 70%, rgba(125,50,255,.12), transparent 30%);
   z-index: -1;
 }
 
@@ -37,7 +37,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(6,7,12,.88);
+  background: rgba(6,7,12,.9);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid #20212d;
   position: sticky;
@@ -48,7 +48,6 @@ body::before {
 .logo {
   font-family: Orbitron;
   font-weight: 800;
-  font-size: 20px;
 }
 
 .logo span {
@@ -56,11 +55,10 @@ body::before {
 }
 
 nav a {
+  color: #888b96;
   text-decoration: none;
-  color: #8c8e99;
-  margin-left: 28px;
+  margin-left: 25px;
   font-size: 13px;
-  transition: .2s;
 }
 
 nav a:hover {
@@ -70,8 +68,8 @@ nav a:hover {
 .menu-btn {
   display: none;
   background: none;
-  color: white;
   border: none;
+  color: white;
   font-size: 25px;
 }
 
@@ -87,9 +85,9 @@ nav a:hover {
 
 .mobile-menu a {
   display: block;
+  padding: 10px;
   color: white;
   text-decoration: none;
-  padding: 10px;
 }
 
 
@@ -101,7 +99,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50px;
+  gap: 45px;
 }
 
 .hero-text {
@@ -113,7 +111,7 @@ nav a:hover {
   padding: 8px 13px;
   border-radius: 30px;
   color: #00eaff;
-  background: #0c1a20;
+  background: #0b1c22;
   border: 1px solid #164b56;
   font-size: 10px;
   margin-bottom: 20px;
@@ -131,7 +129,7 @@ nav a:hover {
 }
 
 .hero p {
-  color: #8d8e98;
+  color: #898b95;
   line-height: 1.8;
   margin: 22px 0;
 }
@@ -150,19 +148,19 @@ nav a:hover {
 }
 
 .primary {
-  border: none;
   background: #00eaff;
+  border: none;
   color: black;
 }
 
 .secondary {
   background: #11121a;
   color: white;
-  border: 1px solid #2a2b3a;
+  border: 1px solid #292b3a;
 }
 
 
-/* DEMO GAME */
+/* GAME */
 
 .demo-game {
   width: 410px;
@@ -190,8 +188,7 @@ nav a:hover {
   border-radius: 14px;
   overflow: hidden;
   position: relative;
-  background:
-    radial-gradient(circle at center, #12243c, #080b13 65%);
+  background: radial-gradient(circle,#12243c,#080b13 65%);
 }
 
 .grid-lines {
@@ -200,7 +197,7 @@ nav a:hover {
   opacity: .15;
   background-image:
     linear-gradient(#00eaff 1px, transparent 1px),
-    linear-gradient(90deg, #00eaff 1px, transparent 1px);
+    linear-gradient(90deg,#00eaff 1px,transparent 1px);
   background-size: 35px 35px;
   transform: perspective(300px) rotateX(55deg) scale(1.5);
 }
@@ -209,10 +206,25 @@ nav a:hover {
   position: absolute;
   font-size: 35px;
   left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
+  top: 45%;
+  transform: translate(-50%,-50%);
+  z-index: 5;
   filter: drop-shadow(0 0 15px #00eaff);
-  z-index: 3;
+  transition: left .08s, top .08s;
+}
+
+.player.auto {
+  animation: autoFly 2s infinite alternate ease-in-out;
+}
+
+@keyframes autoFly {
+  from {
+    transform: translate(-110px,-30px) rotate(-8deg);
+  }
+
+  to {
+    transform: translate(100px,30px) rotate(8deg);
+  }
 }
 
 .target {
@@ -220,21 +232,30 @@ nav a:hover {
   color: #00eaff;
   font-size: 20px;
   filter: drop-shadow(0 0 12px #00eaff);
+  animation: targetMove 2s infinite alternate ease-in-out;
 }
 
 .target1 {
-  top: 25%;
+  top: 20%;
   left: 20%;
 }
 
 .target2 {
   top: 45%;
   right: 20%;
+  animation-delay: .5s;
 }
 
 .target3 {
   top: 70%;
-  left: 40%;
+  left: 45%;
+  animation-delay: 1s;
+}
+
+@keyframes targetMove {
+  to {
+    transform: translate(25px,-25px) scale(1.3);
+  }
 }
 
 .score-box {
@@ -243,6 +264,7 @@ nav a:hover {
   left: 15px;
   color: #777;
   font-size: 9px;
+  z-index: 10;
 }
 
 .score-box strong {
@@ -276,42 +298,36 @@ nav a:hover {
 }
 
 
-/* AUTO ANIMATION */
+/* ANALOG */
 
-.player.auto {
-  animation: fly 1.8s infinite alternate ease-in-out;
+.joystick-area {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 20;
 }
 
-.target {
-  animation: targetMove 2.5s infinite alternate ease-in-out;
+.joystick-base {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: 2px solid rgba(0,234,255,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  box-shadow: 0 0 20px rgba(0,234,255,.08);
 }
 
-.target2 {
-  animation-delay: .5s;
-}
-
-.target3 {
-  animation-delay: 1s;
-}
-
-@keyframes fly {
-  from {
-    transform: translateX(-120px) rotate(-8deg);
-  }
-
-  to {
-    transform: translateX(100px) rotate(8deg);
-  }
-}
-
-@keyframes targetMove {
-  from {
-    transform: translate(0,0) scale(.8);
-  }
-
-  to {
-    transform: translate(30px,-25px) scale(1.3);
-  }
+.joystick-stick {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00eaff;
+  box-shadow: 0 0 20px rgba(0,234,255,.6);
+  position: absolute;
+  transition: transform .05s;
 }
 
 
@@ -320,7 +336,7 @@ nav a:hover {
 .stats {
   width: 86%;
   max-width: 1150px;
-  margin: -25px auto 0;
+  margin: -20px auto 0;
   display: grid;
   grid-template-columns: repeat(3,1fr);
   gap: 15px;
@@ -328,12 +344,12 @@ nav a:hover {
 
 .stat {
   display: flex;
-  gap: 15px;
   align-items: center;
+  gap: 15px;
+  padding: 18px;
   background: #101119;
   border: 1px solid #242635;
   border-radius: 13px;
-  padding: 18px;
 }
 
 .stat span {
@@ -392,31 +408,30 @@ nav a:hover {
 .game-card:hover {
   transform: translateY(-7px);
   border-color: #00eaff;
-  box-shadow: 0 15px 40px rgba(0,234,255,.08);
 }
 
 .game-icon {
   height: 150px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-size: 60px;
 }
 
 .target-icon {
-  background: linear-gradient(135deg,#102f35,#11121c);
+  background: #102f35;
 }
 
 .puzzle-icon {
-  background: linear-gradient(135deg,#2b153a,#11121c);
+  background: #2a153a;
 }
 
 .space-icon {
-  background: linear-gradient(135deg,#122044,#11121c);
+  background: #122044;
 }
 
 .race-icon {
-  background: linear-gradient(135deg,#3a1919,#11121c);
+  background: #3a1919;
 }
 
 .game-card h3,
@@ -450,6 +465,107 @@ nav a:hover {
 .game-card button:hover {
   background: #00eaff;
   color: black;
+}
+
+
+/* VIP */
+
+.vip-card {
+  margin-top: 25px;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #4c3c10;
+  background:
+    radial-gradient(circle at 10% 50%, rgba(255,203,52,.12), transparent 35%),
+    #15130c;
+}
+
+.vip-icon {
+  font-size: 75px;
+  filter: drop-shadow(0 0 20px rgba(255,204,50,.5));
+}
+
+.vip-label {
+  color: #ffd43b;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.vip-content h2 {
+  font-family: Orbitron;
+  margin: 5px 0;
+}
+
+.vip-content p {
+  color: #999;
+  font-size: 12px;
+}
+
+.vip-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.vip-features span {
+  padding: 7px 10px;
+  background: #242015;
+  border-radius: 7px;
+  color: #d9bd55;
+  font-size: 10px;
+}
+
+.vip-btn {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #ffd43b;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* SKINS */
+
+.sub-title {
+  margin: 40px 0 15px;
+}
+
+.skins {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+.skin {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #282a39;
+  background: #101119;
+  color: white;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+.skin small {
+  display: block;
+  font-size: 9px;
+  color: #777;
+  margin-top: 8px;
+}
+
+.skin.active {
+  border-color: #00eaff;
+  box-shadow: 0 0 20px rgba(0,234,255,.1);
+}
+
+.vip-skin {
+  border-color: #4d4018;
 }
 
 
@@ -516,12 +632,6 @@ footer p {
   font-size: 12px;
 }
 
-footer span {
-  margin: 0 8px;
-  color: #777;
-  font-size: 20px;
-}
-
 footer hr {
   border: none;
   border-top: 1px solid #20212d;
@@ -533,8 +643,8 @@ footer hr {
 
 .toast {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  right: 20px;
+  bottom: 20px;
   padding: 13px 18px;
   background: #12131c;
   border: 1px solid #00eaff;
@@ -553,28 +663,29 @@ footer hr {
 
 /* RESPONSIVE */
 
-@media(max-width: 950px) {
+@media(max-width:950px) {
 
   .hero {
     flex-direction: column;
     text-align: center;
   }
 
-  .hero-text {
-    max-width: 700px;
-  }
-
-  .buttons {
-    justify-content: center;
-  }
-
   .games {
     grid-template-columns: repeat(2,1fr);
   }
 
+  .vip-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .vip-features {
+    justify-content: center;
+  }
+
 }
 
-@media(max-width: 650px) {
+@media(max-width:650px) {
 
   nav {
     display: none;
@@ -601,12 +712,20 @@ footer hr {
     grid-template-columns: 1fr;
   }
 
+  .skins {
+    grid-template-columns: repeat(2,1fr);
+  }
+
   .leader {
     grid-template-columns: 35px 40px 1fr;
   }
 
   .leader em {
     display: none;
+  }
+
+  .vip-card {
+    padding: 20px;
   }
 
   }
