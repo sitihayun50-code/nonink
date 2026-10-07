@@ -2,374 +2,682 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>NAZUAN PLAY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nazuan Gaming</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="navbar">
-  <div class="logo">NAZUAN <span>PLAY</span></div>
+  <aside class="sidebar">
+    <div class="logo">N<span>G</span></div>
+    <h2>NAZUAN</h2>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#games">Games</a>
-    <a href="#vip">VIP Pass</a>
-    <a href="#leaderboard">Leaderboard</a>
-  </nav>
+    <nav>
+      <button class="nav active">🏠 <span>Home</span></button>
+      <button class="nav">🎮 <span>Games</span></button>
+      <button class="nav">🏆 <span>Leaderboard</span></button>
+      <button class="nav">👑 <span>VIP</span></button>
+      <button class="nav">⚙️ <span>Settings</span></button>
+    </nav>
 
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home">Home</a>
-  <a href="#games">Games</a>
-  <a href="#vip">VIP Pass</a>
-  <a href="#leaderboard">Leaderboard</a>
-</div>
-
-
-<!-- HERO -->
-
-<section class="hero" id="home">
-
-  <div class="hero-text">
-
-    <div class="badge">⚡ AUTO PLAY + MANUAL CONTROL</div>
-
-    <h1>
-      PLAY.<br>
-      <span>COMPETE.</span><br>
-      HAVE FUN.
-    </h1>
-
-    <p>
-      Mainkan game arcade dengan kontrol analog,
-      auto-play, skin, arena, XP, dan VIP Game Pass.
-    </p>
-
-    <div class="buttons">
-      <button class="primary" onclick="startAutoPlay()">
-        ▶ AUTO PLAY
-      </button>
-
-      <button class="secondary" onclick="stopAutoPlay()">
-        ■ STOP
-      </button>
+    <div class="side-bottom">
+      <button id="themeBtn">🌙 Dark Mode</button>
     </div>
+  </aside>
 
-  </div>
-
-
-  <!-- GAME -->
-
-  <div class="demo-game">
-
-    <div class="game-header">
-      <span>LIVE GAME</span>
-      <b id="gameStatus">AUTO PLAY</b>
-    </div>
-
-    <div class="game-screen" id="gameScreen">
-
-      <div class="grid-lines"></div>
-
-      <div class="player" id="player">🚀</div>
-
-      <div class="target target1">◆</div>
-      <div class="target target2">◆</div>
-      <div class="target target3">◆</div>
-
-      <div class="score-box">
-        SCORE
-        <strong id="score">0</strong>
+  <main>
+    <header>
+      <div>
+        <p class="small">WELCOME BACK</p>
+        <h1>Halo, Nazuan! 👋</h1>
       </div>
 
+      <div class="profile">
+        <div class="avatar">N</div>
+        <div>
+          <b>Nazuan</b>
+          <small>Level 81</small>
+        </div>
+      </div>
+    </header>
 
-      <!-- ANALOG -->
+    <section class="hero">
+      <div>
+        <span class="tag">🔥 PLAYER OF THE DAY</span>
+        <h2>Ready to Play?</h2>
+        <p>Mainkan game favoritmu dan kumpulkan XP untuk naik level.</p>
+        <button class="play" id="playBtn">▶ PLAY NOW</button>
+      </div>
 
-      <div class="joystick-area">
+      <div class="hero-character">🎮</div>
+    </section>
 
-        <div class="joystick-base" id="joystickBase">
+    <section class="stats">
+      <div class="stat">
+        <span>⭐</span>
+        <div>
+          <small>LEVEL</small>
+          <strong>81</strong>
+        </div>
+      </div>
 
-          <div
-            class="joystick-stick"
-            id="joystickStick">
-          </div>
+      <div class="stat">
+        <span>⚡</span>
+        <div>
+          <small>XP</small>
+          <strong id="xp">7,850</strong>
+        </div>
+      </div>
 
+      <div class="stat">
+        <span>🏆</span>
+        <div>
+          <small>RANK</small>
+          <strong>#12</strong>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span>🎯</span>
+        <div>
+          <small>WINS</small>
+          <strong>248</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+
+      <section>
+        <div class="section-title">
+          <h2>Popular Games</h2>
+          <button>Lihat Semua →</button>
         </div>
 
-      </div>
+        <div class="games">
+
+          <article class="game-card">
+            <div class="game-img game1">🚗</div>
+            <div class="game-info">
+              <h3>Street Racing</h3>
+              <p>Racing • Multiplayer</p>
+              <button class="game-btn">PLAY</button>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-img game2">⚔️</div>
+            <div class="game-info">
+              <h3>Battle Arena</h3>
+              <p>Action • PvP</p>
+              <button class="game-btn">PLAY</button>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <div class="game-img game3">🧟</div>
+            <div class="game-info">
+              <h3>Zombie Night</h3>
+              <p>Survival • Horror</p>
+              <button class="game-btn">PLAY</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="leaderboard">
+        <div class="section-title">
+          <h2>Leaderboard</h2>
+          <button>Weekly</button>
+        </div>
+
+        <div class="player first">
+          <b>01</b>
+          <span class="mini-avatar">A</span>
+          <div>
+            <strong>Andi</strong>
+            <small>12,450 XP</small>
+          </div>
+          <span>👑</span>
+        </div>
+
+        <div class="player">
+          <b>02</b>
+          <span class="mini-avatar">R</span>
+          <div>
+            <strong>Rizky</strong>
+            <small>11,230 XP</small>
+          </div>
+          <span>🥈</span>
+        </div>
+
+        <div class="player">
+          <b>03</b>
+          <span class="mini-avatar">D</span>
+          <div>
+            <strong>Dimas</strong>
+            <small>10,980 XP</small>
+          </div>
+          <span>🥉</span>
+        </div>
+
+        <div class="player me">
+          <b>12</b>
+          <span class="mini-avatar">N</span>
+          <div>
+            <strong>Nazuan</strong>
+            <small>7,850 XP</small>
+          </div>
+          <span>🔥</span>
+        </div>
+      </section>
 
     </div>
 
-
-    <div class="game-bottom">
-
+    <section class="vip">
       <div>
-        <small>LEVEL</small>
-        <strong id="level">1</strong>
+        <span class="tag">👑 VIP MEMBERSHIP</span>
+        <h2>Unlock More Features</h2>
+        <p>Dapatkan badge eksklusif, bonus XP, avatar khusus, dan fitur premium lainnya.</p>
       </div>
+      <button id="vipBtn">JOIN VIP</button>
+    </section>
 
-      <div>
-        <small>XP</small>
-        <strong id="xp">0</strong>
-      </div>
+    <footer>
+      © 2026 Nazuan Gaming • Made with HTML, CSS & JavaScript
+    </footer>
 
-      <div>
-        <small>COINS</small>
-        <strong id="coins">2,450</strong>
-      </div>
+  </main>
 
-    </div>
+  <div class="toast" id="toast"></div>
 
-  </div>
-
-</section>
-
-
-<!-- STATS -->
-
-<section class="stats">
-
-  <div class="stat">
-    <span>🎮</span>
-    <div>
-      <small>GAME DIMAINKAN</small>
-      <strong id="played">24</strong>
-    </div>
-  </div>
-
-  <div class="stat">
-    <span>👑</span>
-    <div>
-      <small>STATUS</small>
-      <strong id="vipStatus">VIP</strong>
-    </div>
-  </div>
-
-  <div class="stat">
-    <span>🔥</span>
-    <div>
-      <small>STREAK</small>
-      <strong id="streak">7</strong>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- GAMES -->
-
-<section class="section" id="games">
-
-  <div class="heading">
-    <small>EXPLORE</small>
-    <h2>GAME CENTER</h2>
-  </div>
-
-  <div class="games">
-
-    <article class="game-card">
-
-      <div class="game-icon target-icon">🎯</div>
-
-      <h3>Target Rush</h3>
-      <p>Arcade • Action</p>
-
-      <button onclick="openGame('Target Rush')">
-        PLAY GAME →
-      </button>
-
-    </article>
-
-
-    <article class="game-card">
-
-      <div class="game-icon puzzle-icon">🧩</div>
-
-      <h3>Puzzle Master</h3>
-      <p>Puzzle • Casual</p>
-
-      <button onclick="openGame('Puzzle Master')">
-        PLAY GAME →
-      </button>
-
-    </article>
-
-
-    <article class="game-card">
-
-      <div class="game-icon space-icon">🚀</div>
-
-      <h3>Space Run</h3>
-      <p>Arcade • Adventure</p>
-
-      <button onclick="openGame('Space Run')">
-        PLAY GAME →
-      </button>
-
-    </article>
-
-
-    <article class="game-card">
-
-      <div class="game-icon race-icon">🏎️</div>
-
-      <h3>Speed Race</h3>
-      <p>Racing • Arcade</p>
-
-      <button onclick="openGame('Speed Race')">
-        PLAY GAME →
-      </button>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- VIP GAME PASS -->
-
-<section class="section" id="vip">
-
-  <div class="heading">
-    <small>PREMIUM COSMETICS</small>
-    <h2>VIP GAME PASS</h2>
-  </div>
-
-
-  <div class="vip-card">
-
-    <div class="vip-icon">👑</div>
-
-    <div class="vip-content">
-
-      <span class="vip-label">NAZUAN VIP</span>
-
-      <h2>VIP GAME PASS</h2>
-
-      <p>
-        Buka skin eksklusif, efek kendaraan,
-        badge VIP, dan arena khusus.
-      </p>
-
-      <div class="vip-features">
-
-        <span>✓ VIP Badge</span>
-        <span>✓ Neon Skin</span>
-        <span>✓ VIP Arena</span>
-        <span>✓ Special Effects</span>
-
-      </div>
-
-      <button class="vip-btn" onclick="activateVIP()">
-        AKTIFKAN VIP
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- SKINS -->
-
-  <h3 class="sub-title">🎨 PILIH SKIN</h3>
-
-  <div class="skins">
-
-    <button class="skin active" onclick="selectSkin('🚀')">
-      🚀
-      <small>DEFAULT</small>
-    </button>
-
-    <button class="skin" onclick="selectSkin('🛸')">
-      🛸
-      <small>SPACE</small>
-    </button>
-
-    <button class="skin" onclick="selectSkin('⚡')">
-      ⚡
-      <small>NEON</small>
-    </button>
-
-    <button class="skin vip-skin" onclick="selectSkin('👑')">
-      👑
-      <small>VIP</small>
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- LEADERBOARD -->
-
-<section class="section" id="leaderboard">
-
-  <div class="heading">
-    <small>TOP PLAYERS</small>
-    <h2>LEADERBOARD</h2>
-  </div>
-
-  <div class="leaderboard">
-
-    <div class="leader">
-      <b>#1</b>
-      <span class="avatar">A</span>
-      <strong>ALVIN</strong>
-      <em>12,840 XP</em>
-    </div>
-
-    <div class="leader">
-      <b>#2</b>
-      <span class="avatar">R</span>
-      <strong>RIZKY</strong>
-      <em>11,920 XP</em>
-    </div>
-
-    <div class="leader">
-      <b>#3</b>
-      <span class="avatar">D</span>
-      <strong>DANU</strong>
-      <em>10,775 XP</em>
-    </div>
-
-    <div class="leader you">
-      <b>#8</b>
-      <span class="avatar">N</span>
-      <strong>NAZUAN 👑</strong>
-      <em id="leaderXP">8,430 XP</em>
-    </div>
-
-  </div>
-
-</section>
-
-
-<footer>
-
-  <h2>NAZUAN PLAY</h2>
-
-  <p>
-    Arcade gaming dengan poin dan koin virtual.
-  </p>
-
-  <hr>
-
-  <small>© 2026 NAZUAN PLAY</small>
-
-</footer>
-
-
-<div class="toast" id="toast">
-  🎮 <span id="toastText">Game dimulai</span>
-</div>
-
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-  </html>
+</html>
+
+:::writing{variant="standard" id="74106" title="style.css"}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0b0d14;
+  color: #fff;
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  background: #11141d;
+  border-right: 1px solid #242936;
+  padding: 28px 18px;
+  position: fixed;
+  height: 100vh;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg,#7c3cff,#00d9ff);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.logo span {
+  color: #fff;
+}
+
+.sidebar h2 {
+  margin-bottom: 35px;
+  letter-spacing: 2px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav,
+#themeBtn {
+  border: 0;
+  background: transparent;
+  color: #9ca3b2;
+  padding: 13px;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav:hover,
+.nav.active {
+  background: #202532;
+  color: #fff;
+}
+
+.side-bottom {
+  position: absolute;
+  bottom: 25px;
+  left: 18px;
+  right: 18px;
+}
+
+main {
+  margin-left: 230px;
+  width: calc(100% - 230px);
+  padding: 30px 40px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.small {
+  color: #7e8798;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile small,
+.player small {
+  display: block;
+  color: #8d95a5;
+  margin-top: 4px;
+}
+
+.avatar,
+.mini-avatar {
+  background: linear-gradient(135deg,#7c3cff,#00c9ff);
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.avatar {
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+}
+
+.hero {
+  min-height: 250px;
+  padding: 35px;
+  border-radius: 22px;
+  background: linear-gradient(120deg,#171b29,#25203d);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #bba6ff;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.hero p {
+  color: #a7adbb;
+  max-width: 500px;
+  margin-bottom: 22px;
+}
+
+.play,
+.vip button,
+.game-btn {
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.play {
+  padding: 13px 22px;
+  background: linear-gradient(90deg,#7440ff,#00bfff);
+}
+
+.hero-character {
+  font-size: 130px;
+  transform: rotate(-8deg);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  margin: 20px 0 35px;
+}
+
+.stat {
+  background: #121620;
+  border: 1px solid #242936;
+  border-radius: 15px;
+  padding: 18px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.stat > span {
+  font-size: 25px;
+}
+
+.stat small {
+  display: block;
+  color: #777f90;
+  font-size: 10px;
+}
+
+.stat strong {
+  font-size: 22px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 25px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-title h2 {
+  font-size: 20px;
+}
+
+.section-title button {
+  background: none;
+  color: #929aaa;
+  border: 0;
+  cursor: pointer;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+}
+
+.game-card,
+.leaderboard {
+  background: #121620;
+  border: 1px solid #242936;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.game-img {
+  height: 130px;
+  display: grid;
+  place-items: center;
+  font-size: 55px;
+}
+
+.game1 { background: linear-gradient(135deg,#202a45,#182032); }
+.game2 { background: linear-gradient(135deg,#3b2038,#20172c); }
+.game3 { background: linear-gradient(135deg,#263525,#17201b); }
+
+.game-info {
+  padding: 15px;
+}
+
+.game-info h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.game-info p {
+  color: #81899a;
+  font-size: 12px;
+  margin-bottom: 13px;
+}
+
+.game-btn {
+  background: #242b3a;
+  padding: 8px 14px;
+  font-size: 11px;
+}
+
+.game-btn:hover {
+  background: #7042e8;
+}
+
+.leaderboard {
+  padding: 20px;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 5px;
+  border-bottom: 1px solid #242936;
+}
+
+.player > b {
+  width: 25px;
+  color: #7d8595;
+}
+
+.mini-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.player div {
+  flex: 1;
+}
+
+.player.me {
+  background: #1b2030;
+  border-radius: 10px;
+  margin-top: 8px;
+  padding: 12px;
+}
+
+.vip {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 18px;
+  background: linear-gradient(100deg,#281c4b,#162a42);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vip h2 {
+  margin: 8px 0;
+}
+
+.vip p {
+  color: #a5acba;
+  max-width: 650px;
+}
+
+.vip button {
+  padding: 13px 20px;
+  background: #7440ff;
+}
+
+footer {
+  text-align: center;
+  color: #666e7d;
+  font-size: 11px;
+  padding: 35px 0 10px;
+}
+
+.toast {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  background: #202532;
+  border: 1px solid #343b4a;
+  padding: 14px 20px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .3s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.light {
+  background: #eef1f7;
+  color: #171923;
+}
+
+.light .sidebar,
+.light .stat,
+.light .game-card,
+.light .leaderboard {
+  background: #fff;
+  border-color: #dce0e8;
+}
+
+@media(max-width: 900px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar h2,
+  .nav span,
+  #themeBtn {
+    display: none;
+  }
+
+  main {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+    padding: 20px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 600px) {
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .hero-character {
+    font-size: 70px;
+  }
+
+  .games {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+}
+
+:::writing{variant="standard" id="92643" title="script.js"}
+
+const toast = document.getElementById("toast");
+const xp = document.getElementById("xp");
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
+}
+
+document.getElementById("playBtn").addEventListener("click", () => {
+  let currentXP = 7850;
+
+  currentXP += 250;
+  xp.textContent = currentXP.toLocaleString("id-ID");
+
+  showToast("🎮 Game dimulai! +250 XP");
+});
+
+document.querySelectorAll(".game-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const gameName =
+      button.parentElement.querySelector("h3").textContent;
+
+    showToast(`🎮 Membuka ${gameName}...`);
+  });
+});
+
+document.getElementById("vipBtn").addEventListener("click", () => {
+  showToast("👑 Fitur VIP dipilih!");
+});
+
+document.getElementById("themeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  if (document.body.classList.contains("light")) {
+    document.getElementById("themeBtn").textContent = "☀️ Light Mode";
+    showToast("☀️ Light Mode aktif");
+  } else {
+    document.getElementById("themeBtn").textContent = "🌙 Dark Mode";
+    showToast("🌙 Dark Mode aktif");
+  }
+});
+
+document.querySelectorAll(".nav").forEach(item => {
+  item.addEventListener("click", () => {
+    document.querySelectorAll(".nav")
+      .forEach(x => x.classList.remove("active"));
+
+    item.classList.add("active");
+    showToast(item.textContent.trim() + " dibuka");
+  });
+});
+
+Simpan ketiga kode tersebut dalam folder yang sama, lalu buka "index.html" di browser.
